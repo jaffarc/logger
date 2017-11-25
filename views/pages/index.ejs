@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{{ include ../partials/head }}
+</head>
+
+<body class="container">
+
+	<header>
+		{{include ../partials/header }}
+	</header>
+
+	<main>
+		<div class="">
+			<div id="msg"></div>
+
+		</div>
+	</main>
+
+	<footer>
+		{{ include ../partials/footer }}
+	</footer>
+
+
+	<script>
+
+		const get = () => {
+			let xhReq = new XMLHttpRequest();
+			xhReq.open("GET", "/list/error", false);
+			xhReq.send(null);
+			console.log('xhReq', xhReq);
+			document.getElementById('msg').innerHTML = '<p>'+ xhReq.responseText + '</p>';
+		}
+
+		let socket = io('http://localhost:4011', { transports: ['websocket'] });
+		socket.on('finish', (data) => {
+
+			get();
+		});
+		get();
+	</script>
+</body>
+
+</html>

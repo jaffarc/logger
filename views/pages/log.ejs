@@ -1,0 +1,25 @@
+<table>
+    <thead>
+        <tr>
+            <th colspan="3">Atividades do projeto</th>
+        </tr>
+        <tr>
+            <th>#</th>
+            <th colspan="2">Descrição do erro</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ for(var i=0; i < posts.length; i++) { }} 
+            <tr>
+                <td> <i class="fa {{= posts[i].body.metadata.icon}}" aria-hidden="true"> </i></td>
+                <td><pre> {{= posts[i].body.error}}</pre></td>
+                <td>  {{= posts[i].updatedAt}} </td>
+                <td>
+                    <i class="material-icons button edit"></i>
+                   <a href="" title="Assignee"> <i class="fa fa-share-square-o" aria-hidden="true"></i></a>
+                   
+                </td>
+            </tr>
+            {{ } }}
+    </tbody>
+</table>
