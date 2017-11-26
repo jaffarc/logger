@@ -25,7 +25,7 @@ app.get('/list/error', (req, res) => {
 
 
     let error = global.dblog.model('error');
-    let posts = error.find().select({ __v: 0 }).sort({updatedAt: -1}).exec();
+    let posts = error.find({status:true}).select({ __v: 0 }).sort({updatedAt: -1}).exec();
 
     posts.then((result) => {
 

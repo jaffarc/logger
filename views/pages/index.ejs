@@ -30,7 +30,7 @@
 			xhReq.open("GET", "/list/error", false);
 			xhReq.send(null);
 			console.log('xhReq', xhReq);
-			document.getElementById('msg').innerHTML = '<p>'+ xhReq.responseText + '</p>';
+			document.getElementById('msg').innerHTML = '<p>' + xhReq.responseText + '</p>';
 		}
 
 		let socket = io('http://localhost:4011', { transports: ['websocket'] });
@@ -38,7 +38,31 @@
 
 			get();
 		});
+
 		get();
+
+		document.getElementById("products").addEventListener("click", (e) => {
+			if (e.target.tagName === "A") {
+				e.preventDefault();
+				var row = e.target.parentNode.parentNode;
+				while ((row = nextTr(row)) && !/\bparent\b/.test(row.className))
+					toggle_it(row);
+			}
+		});
+
+		const nextTr = (row) => {
+			while ((row = row.nextSibling) && row.nodeType != 1);
+			return row;
+		};
+
+		const toggle_it = (item) => {
+			if (/\bopen\b/.test(item.className)) {
+
+				return item.className = item.className.replace(/\bopen\b/, " ");
+			}
+
+			item.className += " open";
+		} 
 	</script>
 </body>
 

@@ -54,6 +54,10 @@
 		cursor: default;
 	}
 
+	tbody tr {
+		display: none;
+	}
+
 	tbody tr:last-child td {
 		border: none;
 	}
@@ -63,8 +67,7 @@
 	}
 
 	td:last-child {
-		text-align: right;
-		padding-right: 10px;
+		text-align: left;
 	}
 
 	.button {
@@ -82,9 +85,19 @@
 		color: #dc2a2a;
 	}
 
+	tr.parent {
+		display: table-row;
+	}
+
+	tr.open {
+		display: table-row;
+	}
 	pre {
-		width: 600px;
-		height: 100px;
-		overflow: hidden;
+		white-space: pre-wrap;       /* Since CSS 2.1 */
+		white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+		white-space: -pre-wrap;      /* Opera 4-6 */
+		white-space: -o-pre-wrap;    /* Opera 7 */
+		word-wrap: break-word;       /* Internet Explorer 5.5+ */
+		min-height: 150px;
 	}
 </style>
